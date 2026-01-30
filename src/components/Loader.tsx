@@ -1,10 +1,10 @@
 import * as React from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Button, Flex, Result, Spin } from "antd";
+import { Button, Result, Spin } from "antd";
 import { AxiosError } from "axios";
-
-import { convertStatusCode } from "../utils";
 import { ReloadOutlined } from "@ant-design/icons";
+
+import { convertStatusCode, getErrorMessage } from "../utils";
 
 export interface LoaderProps<TData> {
     query: UseQueryResult<TData, AxiosError>;
@@ -27,6 +27,7 @@ export const Loader = <TData,>(props: LoaderProps<TData>) => {
         return (
             <Result
                 status={convertStatusCode(error.status)}
+                title={getErrorMessage(error.status)}
                 subTitle={<Button type="primary" onClick={() => refetch()}>Retry</Button>}
             />
         );
