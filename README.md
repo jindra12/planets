@@ -10,7 +10,7 @@
        * Pro získání seznamu byla využita knihovna axios
 
    * Přidej state pro celou aplikaci se seznamem planet. Tak, aby jej každá komponenta mohla použít.
-       * Každá komponenta může využít API /planets bez nutnosti ptání se API díky @tanstack/react-query, což je knihovna která zpracovává globální stavy asynchronních operací jako volání API
+       * Každá komponenta může využít API /planets bez nutnosti opakovaného ptání se API díky @tanstack/react-query, což je knihovna která zpracovává globální stavy asynchronních operací jako volání API
 
    * Použij silně typové objekty.
       * Vytvořil jsem TS objekty které popisují objekty vracené z API
