@@ -1,11 +1,11 @@
-import { Main } from "../..";
+import { Dynamic } from "../../Dynamic";
 import { AppHead } from "../_app-head";
 
 const Person = () => {
     return (
         <>
             <AppHead />
-            <Main />
+            <Dynamic />
         </>
     );
 };

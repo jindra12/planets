@@ -1,11 +1,11 @@
-import { Main } from "../..";
+import { Dynamic } from "../../Dynamic";
 import { AppHead } from "../_app-head";
 
 const Film = () => {
     return (
         <>
             <AppHead />
-            <Main />
+            <Dynamic />
         </>
     );
 };

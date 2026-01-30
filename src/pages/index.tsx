@@ -1,11 +1,11 @@
-import { Main } from "..";
+import { Dynamic } from "../Dynamic";
 import { AppHead } from "./_app-head";
 
 const Planets = () => {
     return (
         <>
             <AppHead />
-            <Main />
+            <Dynamic />
         </>
     );
 };

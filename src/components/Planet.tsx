@@ -1,6 +1,9 @@
 import * as React from "react";
+import { Descriptions, List, Typography } from "antd";
+
 import { Planet as PlanetType } from "../api/types";
-import { Descriptions, List } from "antd";
+import { getFilmUrl, getPersonUrl } from "../utils";
+import { RouteLink } from "./RouteLink";
 
 export const Planet: React.FunctionComponent<PlanetType> = (props) => {
     return (
@@ -29,6 +32,33 @@ export const Planet: React.FunctionComponent<PlanetType> = (props) => {
                 </Descriptions.Item>
                 <Descriptions.Item label="Surface water">
                     {props.surface_water}
+                </Descriptions.Item>
+                <Descriptions.Item label="Residents">
+                    <List
+                        dataSource={props.residents}
+                        renderItem={(resident) => (
+                            <List.Item>
+                                <RouteLink href={getPersonUrl(resident)}>
+                                    {resident}
+                                </RouteLink>
+                            </List.Item>
+                        )}
+                        pagination={{ pageSize: 3 }}
+                    />
+                </Descriptions.Item>
+                <Descriptions.Item label="Films">
+                    <List
+                        dataSource={props.films}
+                        itemLayout="vertical"
+                        renderItem={(film) => (
+                            <List.Item>
+                                <RouteLink href={getFilmUrl(film)}>
+                                    {film}
+                                </RouteLink>
+                            </List.Item>
+                        )}
+                        pagination={{ pageSize: 3 }}
+                    />
                 </Descriptions.Item>
             </Descriptions>
         </List.Item>

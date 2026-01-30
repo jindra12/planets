@@ -1,11 +1,11 @@
-import { Main } from "..";
+import { Dynamic } from "../Dynamic";
 import { AppHead } from "./_app-head";
 
 const NotFound = () => {
     return (
         <>
             <AppHead />
-            <Main />
+            <Dynamic />
         </>
     );
 };

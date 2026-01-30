@@ -6,3 +6,13 @@ export const convertStatusCode = (status?: number): ResultStatusType => {
     }
     return "error";
 };
+
+const getIdFromUrl = (url: string) => {
+    const regex = /\/(?<id>\d+)$/ui;
+    const match = url.match(regex);
+    return match?.groups!.id;
+};
+
+export const getPersonUrl = (apiUrl: string) => `/person/${getIdFromUrl(apiUrl)}`;
+
+export const getFilmUrl = (apiUrl: string) => `/film/${getIdFromUrl(apiUrl)}`;

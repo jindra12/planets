@@ -5,11 +5,12 @@ import ConfigProvider from "antd/es/config-provider";
 import theme from "antd/es/theme";
 import Flex from "antd/es/flex";
 import Switch from "antd/es/switch";
-import { useMediaQuery } from "usehooks-ts";
+import Divider from "antd/es/divider";
+import { RouteLink } from "./RouteLink";
+import { Typography } from "antd";
 
 export const AppLayout: React.FunctionComponent<React.PropsWithChildren> = (props) => {
-    const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
-    const [isDark, setDark] = React.useState(prefersDark);
+    const [isDark, setDark] = React.useState(window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     return (
         <ConfigProvider
@@ -17,23 +18,29 @@ export const AppLayout: React.FunctionComponent<React.PropsWithChildren> = (prop
                 algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
             }}
         >
-            <Layout>
+            <Layout className={isDark ? "ant-layout-dark" : "ant-layout-light"}>
                 <Header>
                     <Flex wrap gap="16px" justify="space-between" align="center">
                         <strong>
-                            This is a test page used to showcase my React skills
+                            <Typography.Link href="/">
+                                Interview page
+                            </Typography.Link>
                         </strong>
                         <Switch
                             checked={!isDark}
-                            onChange={setDark}
+                            onChange={(checked) => setDark(!checked)}
                             checkedChildren="Light mode"
                             unCheckedChildren="Dark mode"
                         />
                     </Flex>
                 </Header>
-                <Layout>
-                    <Content>{props.children}</Content>
-                </Layout>
+                <Divider />
+                <Content>
+                    <div className="ant-layout-inner">
+                        {props.children}
+                    </div>
+                </Content>
+                <Divider />
                 <Footer>
                     Published freely under MIT licence
                 </Footer>

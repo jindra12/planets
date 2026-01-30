@@ -1,0 +1,43 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.ant-layout-light {
+    --body-background: #f7f3e8;
+    --header-background: #d2cfc5;
+}
+
+.ant-layout-dark {
+    --body-background: #0f172a;
+    --header-background: #0f172a;
+}
+
+
+.ant-layout-header {
+    background-color: var(--header-background)!important;
+}
+
+.ant-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.ant-layout-content {
+    flex: 1;
+}
+
+.ant-layout-footer {
+    padding: 2rem;
+}
+
+.ant-layout-inner {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    background-color: var(--body-background);
+    padding: 2rem;
+    border-radius: .5rem;
+}

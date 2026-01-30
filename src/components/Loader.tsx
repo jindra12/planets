@@ -8,7 +8,7 @@ import { ReloadOutlined } from "@ant-design/icons";
 
 export interface LoaderProps<TData> {
     query: UseQueryResult<TData, AxiosError>;
-    children: (data: TData) => React.ReactNode;
+    children: (data: TData, refresh: React.ReactNode) => React.ReactNode;
 }
 
 export const Loader = <TData,>(props: LoaderProps<TData>) => {
@@ -33,18 +33,14 @@ export const Loader = <TData,>(props: LoaderProps<TData>) => {
     }
 
     if (data) {
-        return (
-            <Flex vertical gap="16px">
-                <Flex justify="end">
-                    <Button
-                        onClick={() => refetch()}
-                        icon={<ReloadOutlined />}
-                    >
-                        Refresh
-                    </Button>
-                </Flex>
-                {props.children(data)}
-            </Flex>
+        return props.children(
+            data,
+            <Button
+                onClick={() => refetch()}
+                icon={<ReloadOutlined />}
+            >
+                Refresh
+            </Button>
         );
     }
 
