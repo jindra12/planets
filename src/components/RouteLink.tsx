@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography } from "antd";
-
+import Link from "antd/es/typography/Link";
 export interface RouteLinkProps {
     href: string;
 }
@@ -15,8 +14,8 @@ export const RouteLink: React.FunctionComponent<React.PropsWithChildren<RouteLin
         }
     };
     return (
-        <Typography.Link href={props.href} onClick={onClick}>
+        <Link href={props.href} onClick={onClick}>
             {props.children}
-        </Typography.Link>
+        </Link>
     );
 };

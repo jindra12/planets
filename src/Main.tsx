@@ -27,18 +27,18 @@ const NotFound = React.lazy(() => import("./components/NotFound"));
 
 const Main = () => (
     <React.StrictMode> {/* Adds developer mode-only checks to find common bugs */}
-        <QueryClientProvider client={client}> {/* this context stores API results */}
-            <AppLayout> {/* Simple ANT Design layout to make sure the page isn't empty */}
-                <BrowserRouter> {/* A few pages just to browse around */}
+        <BrowserRouter> {/* A few pages just to browse around */}
+            <QueryClientProvider client={client}> {/* this context stores API results */}
+                <AppLayout> {/* Simple ANT Design layout to make sure the page isn't empty */}
                     <Routes>
                         <Route path="/" Component={suspense(Planets)} />
                         <Route path="/film/:id" Component={suspense(Film)} />
                         <Route path="/person/:id" Component={suspense(Person)} />
                         <Route path="*" Component={suspense(NotFound)} />
                     </Routes>
-                </BrowserRouter>
-            </AppLayout>
-        </QueryClientProvider>
+                </AppLayout>
+            </QueryClientProvider>
+        </BrowserRouter>
     </React.StrictMode>
 );
 
